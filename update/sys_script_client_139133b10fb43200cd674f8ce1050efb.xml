@@ -13,6 +13,12 @@
         <script><![CDATA[function onLoad() {
    //Type appropriate comment here, and begin script below
    alert("Thank you for loading the NeedIt form.   When you close this alert you will be able to interact with the form.");
+   var gr = new GlideRecord('x_58872_needit_needit');
+   gr.addQuery('u_requested_for', g_user.userID);
+   gr.query();
+   while (gr.next()) {
+      g_form.addInfoMessage(gr.getValue('number'));
+   }
 }]]></script>
         <sys_class_name>sys_script_client</sys_class_name>
         <sys_created_by>admin</sys_created_by>
